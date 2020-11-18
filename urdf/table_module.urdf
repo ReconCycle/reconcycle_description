@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+<robot name="table_module">
+    <!-- As we don't have here a turtlebot base, add a base_link link as its location reference -->
+    <link name="base_link"/>
+    <link name="table_base">
+    <!-- <inertial>
+        <mass value="45"/>
+        <origin xyz="0 0 0"/>
+    </inertial> -->
+        <visual>
+            <origin rpy="1.57 0 0" xyz=" 0 0 0 "/>
+            <geometry>
+                <mesh filename="package://reconcycle_description/meshes/trolley.obj" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <!-- <material name="Black"/> -->
+        </visual>
+        <collision>
+            <origin rpy="1.57 0 0" xyz="0.0 0.0 0"/>
+            <geometry>
+                <mesh filename="package://reconcycle_description/meshes/trolley.obj" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="base_table_joint" type="fixed">
+        <origin rpy="0 0 0" xyz="0.0 0.0 0.805"/>
+        <parent link="base_link"/>
+        <child link="table_base"/>
+    </joint>
+    <link name="pnp_connector">
+        <!-- <inertial>
+            <mass value="3.5"/>
+            <origin xyz="0 0 0"/>
+        </inertial> -->
+        <visual>
+            <origin rpy="1.57  0 0" xyz=" 0 0 0 "/>
+            <geometry>
+                <mesh filename="package://reconcycle_description/meshes/pnp.obj" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="1.57  0 0" xyz="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://reconcycle_description/meshes/pnp.obj" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="table_pnp_joint" type="fixed">
+        <origin rpy="0 0 1.57" xyz="0.0 -0.240 -0.047"/>
+        <parent link="table_base"/>
+        <child link="pnp_connector"/>
+    </joint>
+</robot>    

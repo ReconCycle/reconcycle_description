@@ -45,7 +45,7 @@
         </collision>
     </link>
     <joint name="table_pnp_joint" type="fixed">
-        <origin rpy="0 0 1.57" xyz="0.0 -0.240 -0.047"/>
+        <origin rpy="0 0 0" xyz="0.0 -0.240 -0.047"/>
         <parent link="table_base"/>
         <child link="pnp_connector"/>
     </joint>
